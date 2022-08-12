@@ -1,5 +1,7 @@
 package com.nju.cyc;
 
+import ilog.concert.IloException;
+
 import java.io.IOException;
 
 /**
@@ -11,9 +13,11 @@ import java.io.IOException;
  */
 
 public class main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, IloException {
         CuttingStock problem = new CuttingStock();
         problem.loadInstance();
-        System.out.println(problem);
+        System.out.println(problem.stock_length);
+        ColumnGeneration cg = new ColumnGeneration(problem);
+        cg.solveProblems();
     }
 }
